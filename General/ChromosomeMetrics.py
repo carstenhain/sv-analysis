@@ -160,10 +160,6 @@ def get_random_position(circos_hg38_karyotype_file_path):
                 pos = rand_abs_position - test_abs_pos + get_chromosome_lengths()[chromosome]
                 break
 
-        print(rand_abs_position)
-        print(chrom)
-        print(pos)
-
         stain = get_stain(chrom, pos, circos_hg38_karyotype_file_path)
 
         if not stain in ["acen", "gvar", "stalk", "FAIL"]:

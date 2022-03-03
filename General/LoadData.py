@@ -6,8 +6,8 @@ def load_sv_bed (sv_bed_file_path):
 
     for line in open(sv_bed_file_path):
         chrom = line.rstrip().split("\t")[0]
-        start = line.rstrip().split("\t")[1]
-        end = line.rstrip().split("\t")[2]
+        start = int(line.rstrip().split("\t")[1])
+        end = int(line.rstrip().split("\t")[2])
         descr = line.rstrip().split("\t")[3]
         id = descr.split("_")[0]
 

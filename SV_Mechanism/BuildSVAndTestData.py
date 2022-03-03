@@ -1,6 +1,8 @@
 import General.LoadData
 import General.ChromosomeMetrics
 
+# Writes BED file with padding around SV breakpoints, inclusion of templates from templated insertion is optional
+
 def build_BED_around_SV_breakpoints (sv_bed_file_path, padded_bed_file_path, include_templates, padding):
     sv_bed_data = General.LoadData.load_sv_bed(sv_bed_file_path)
     fo_padded_bed_file = open(padded_bed_file_path, "w")
@@ -21,8 +23,10 @@ def build_BED_around_SV_breakpoints (sv_bed_file_path, padded_bed_file_path, inc
                 ) + "\n")
 
     fo_padded_bed_file.flush()
-def build_BED_around_random_breakpoints (n_points, padded_bed_file_path, include_templates, padding):
-    sv_bed_data = General.LoadData.load_sv_bed(sv_bed_file_path)
+
+# Writes BED file with padding around random genomic locations
+
+def build_BED_around_random_breakpoints (n_points, padded_bed_file_path, padding):
     fo_padded_bed_file = open(padded_bed_file_path, "w")
 
     for i in range(0, n_points):
