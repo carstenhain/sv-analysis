@@ -23,7 +23,7 @@ def build_BED_around_SV_breakpoints (sv_bed_file_path, padded_bed_file_path, inc
                         sv_id + "_" + str(i)
                     ]
                 ) + "\n")
-                i += 0
+                i += 1
 
     fo_padded_bed_file.flush()
 
