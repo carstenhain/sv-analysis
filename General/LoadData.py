@@ -1,3 +1,5 @@
+# Loads data from bed file with all SV informations and output breakpoints per SV in a dictionary with the SV id as key
+
 def load_sv_bed (sv_bed_file_path):
 
     sv_dict = {}
@@ -28,10 +30,13 @@ def load_sv_bed (sv_bed_file_path):
                 sv_dict[id] = [[chrom, start, svtype]]
                 sv_dict[id].append([chrom, end, svtype])
     """
+    # Potential output
     for sv in sv_dict:
         print(sv)
         for item in sv_dict[sv]:
             print(item)
         print("-----------------")
     """
+    
+    return sv_dict
 
