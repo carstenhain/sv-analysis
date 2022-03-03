@@ -40,3 +40,25 @@ def load_sv_bed (sv_bed_file_path):
     
     return sv_dict
 
+# reads fasta file with one or multiple sequences, returns array mit [[seq, name], ...]
+
+def readFASTA (fasta_file_path):
+    seqs = []
+
+    fasta_name = ""
+    fasta_seq = ""
+    for line in open(fasta_file_path):
+        if line.startswith(">"):
+            if fasta_name == "":
+                fasta_name = line.rstrip()
+            else:
+                seqs.append([fasta_name, fasta_seq])
+                fasta_name = line.rstrip()
+                fasta_seq = ""
+        else:
+            fasta_seq += line.rstrip()
+    if fasta_name != "":
+        seqs.append([fasta_name, fasta_seq])
+
+    return seqs
+
