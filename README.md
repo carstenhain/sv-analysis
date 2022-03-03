@@ -14,5 +14,5 @@ Scripts for SV analysis - including filtering, refining, plotting
 ### SV_Mechanism
 | File Name | File Type | Description |
 | ----------- | ----------- | ----------- |
-| BuildSVAndTestData.py | Python | Methods for building files for, and analysing potential SV mechanism. Including RAG enrichment (requires manual FIMO step), LCR enrichment and microhomology  |
+| BuildSVAndTestData.py | Python | Methods for building files for, and analysing potential SV mechanism. Including RAG enrichment (requires manual FIMO step), LCR enrichment and microhomology |
 | Plot.py | Python | Plot gathered data |
