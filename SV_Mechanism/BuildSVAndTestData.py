@@ -18,7 +18,8 @@ def build_BED_around_SV_breakpoints (sv_bed_file_path, padded_bed_file_path, inc
                     [
                         breakpoint[0],
                         str(breakpoint[1] - padding),
-                        str(breakpoint[1] + padding)
+                        str(breakpoint[1] + padding),
+                        sv_id
                     ]
                 ) + "\n")
 
