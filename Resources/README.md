@@ -7,3 +7,7 @@
 | Random.breakpoints.padding.12.fasta | FASTA | Motif file for MEME build from TCR RAG heptamers |
 | Random.breakpoints.padding.25.bed | BED | Motif file for MEME build from TCR RAG heptamers |
 | Random.breakpoints.padding.25.fasta | FASTA | Motif file for MEME build from TCR RAG heptamers |
+| SV.breakpoints.padding.12.bed | BED | hg38 sequences +- 12 bp around breakpoints, for microhomology detection |
+| SV.breakpoints.padding.12.fasta | FASTA | Motif file for MEME build from TCR RAG heptamers |
+| SV.breakpoints.padding.25.bed | BED | Motif file for MEME build from TCR RAG heptamers |
+| SV.breakpoints.padding.25.fasta | FASTA | Motif file for MEME build from TCR RAG heptamers |
