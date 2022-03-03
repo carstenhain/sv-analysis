@@ -1,5 +1,6 @@
 # sv-analysis
 Scripts for SV analysis - including filtering, refining, plotting
+## Files
 | File Name | File Type | Description |
 | ----------- | ----------- | ----------- |
 | ChromosomeMetrics.py | Python | Methods for GRCh38 chromosomes, length, positions, ... |
