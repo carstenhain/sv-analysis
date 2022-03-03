@@ -8,20 +8,22 @@ def build_BED_around_SV_breakpoints (sv_bed_file_path, padded_bed_file_path, inc
     fo_padded_bed_file = open(padded_bed_file_path, "w")
 
     for sv_id in sv_bed_data:
+        i = 0
         for breakpoint in sv_bed_data[sv_id]:
             include_sv = True
             if (not include_templates) and breakpoint[2].startswith("template"):
                 include_sv = False
 
-            if include_templates:
+            if include_sv:
                 fo_padded_bed_file.write("\t".join(
                     [
                         breakpoint[0],
                         str(breakpoint[1] - padding),
                         str(breakpoint[1] + padding),
-                        sv_id
+                        sv_id + "_" + str(i)
                     ]
                 ) + "\n")
+                i += 0
 
     fo_padded_bed_file.flush()
 
