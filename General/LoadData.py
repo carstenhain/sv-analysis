@@ -40,6 +40,15 @@ def load_sv_bed (sv_bed_file_path):
     
     return sv_dict
 
+# # Loads data from bed file with all SV informations and output SV id and SV type
+
+def load_sv_bed_agg_by_id (sv_bed_file_path):
+    sv_dict = load_sv_bed(sv_bed_file_path)
+    agg_sv_dict = {}
+    for sv in sv_dict:
+        agg_sv_dict[sv] = sv_dict[sv][0][-1]
+    return agg_sv_dict
+
 # reads fasta file with one or multiple sequences, returns array mit [[seq, name], ...]
 
 def readFASTA (fasta_file_path):
@@ -50,10 +59,10 @@ def readFASTA (fasta_file_path):
     for line in open(fasta_file_path):
         if line.startswith(">"):
             if fasta_name == "":
-                fasta_name = line.rstrip()
+                fasta_name = line.rstrip().replace(">", "")
             else:
                 seqs.append([fasta_name, fasta_seq])
-                fasta_name = line.rstrip()
+                fasta_name = line.rstrip().replace(">", "")
                 fasta_seq = ""
         else:
             fasta_seq += line.rstrip()

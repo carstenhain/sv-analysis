@@ -43,3 +43,70 @@ def build_BED_around_random_breakpoints (n_points, padded_bed_file_path, padding
         ) + "\n")
 
     fo_padded_bed_file.flush()
+
+# Reads FIMO TSV output saves highest score for each breakpoint
+
+def read_FIMO_output (fimo_output_file_path):
+    data = {}
+
+    for line in open(fimo_output_file_path):
+
+        if line.startswith("1"):
+
+            seq_name = line.split("\t")[2]
+            score = float(line.split("\t")[6])
+
+            if seq_name in data:
+                if score > data[seq_name]:
+                    data[seq_name] = score
+            else:
+                data[seq_name] = score
+
+    data_per_sv = {}
+
+    for breakpoint in data:
+        sv_id = breakpoint.split("_")[0]
+        if sv_id in data_per_sv:
+            data_per_sv[sv_id].append(data[breakpoint])
+        else:
+            data_per_sv[sv_id] = [data[breakpoint]]
+
+    return data_per_sv
+
+# Aggregates multiple FASTA by SV ID
+
+def aggregate_FASTA (fasta_file_path):
+    fasta_data = {}
+    raw_fasta_data = General.LoadData.readFASTA(fasta_file_path)
+
+    for seq in raw_fasta_data:
+        sv_id = seq[0].split("_")[0]
+        breakpoint_seq = seq[1]
+        if sv_id in fasta_data:
+            fasta_data[sv_id].append(breakpoint_seq)
+        else:
+            fasta_data[sv_id] = [breakpoint_seq]
+
+    return fasta_data
+
+# Reads SVType from
+def getSVIDs (sv_bed_file_path):
+    ids = []
+    svtypes = []
+
+    for line in open(sv_bed_file_path):
+        id = line.split("\t")[3].split("_")[0]
+        svtype = "-1"
+        if "DEL" in line.split("\t")[3]:
+            svtype = "DEL"
+        if "INV" in line.split("\t")[3]:
+            svtype = "INV"
+        if "DUP" in line.split("\t")[3]:
+            svtype = "DUP"
+        if ":" in line.split("\t")[3]:
+            svtype = "BND"
+        if not (id in ids):
+            ids.append(id)
+            svtypes.append(svtype)
+
+    return ids, svtypes
