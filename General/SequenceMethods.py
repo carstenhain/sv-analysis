@@ -89,7 +89,7 @@ def getDistanceToNextLCR (chrom, pos, LCR_bed_file_path):
 
         if chrom == lcr_chrom:
             if pos >= lcr_start and pos <= lcr_end:
-                return 0, line.split("\t")[3]
+                return 0, line.split("\t")[3], lcr_dir
             else:
                 dist = np.amin([np.abs(pos - lcr_start), np.abs(pos - lcr_end)])
                 if dist < min_distance:

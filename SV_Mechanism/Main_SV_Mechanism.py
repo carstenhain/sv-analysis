@@ -71,18 +71,17 @@ data_file.close()
 # LCR distance
 
 sv_dict = General.LoadData.load_sv_bed("C:\\Users\\Carst\\Documents\\Promotion\\MF_Verlaufspatient\\WGS\\SV\\CD3Iso.Manuell.Truth_Set.plus.Add_In.templates.manuell_kontrolliert.Final.Sortiert.bed")
-
+"""
 data_file = open("Data\\SV_LCR_distance.txt", "w")
 for sv in sv_dict:
     print(sv)
     for item in sv_dict[sv]:
         data_file.write("\t".join([str(x) for x in item]))
-        print(General.SequenceMethods.getDistanceToNextLCR(item[0], item[1], "D:\\GRCh38_repeats.sort.bed"))
-        #lcr_dist, lcr_name, lcr_dir = General.SequenceMethods.getDistanceToNextLCR(item[0], item[1], "D:\\GRCh38_repeats.sort.bed")
-        #data_file.write("\t" + sv + "\t" + str(lcr_dist) + "\t" + lcr_name + "\t" + lcr_dir + "\n")
-        #data_file.flush()
+        lcr_dist, lcr_name, lcr_dir = General.SequenceMethods.getDistanceToNextLCR(item[0], item[1], "D:\\GRCh38_repeats.sort.bed")
+        data_file.write("\t" + sv + "\t" + str(lcr_dist) + "\t" + lcr_name + "\t" + lcr_dir + "\n")
+        data_file.flush()
 
-
+"""
 sv_dict = {}
 i = 0
 for line in open("..\\Resources\\Random.breakpoints.padding.12.bed"):
@@ -99,6 +98,6 @@ for sv in sv_dict:
     print(sv)
     for item in sv_dict[sv]:
         data_file.write("\t".join([str(x) for x in item]))
-        lcr_dist, lcr_name = General.SequenceMethods.getDistanceToNextLCR(item[0], item[1], "D:\\GRCh38_repeats.sort.bed")
+        lcr_dist, lcr_name, lcr_dir = General.SequenceMethods.getDistanceToNextLCR(item[0], item[1], "D:\\GRCh38_repeats.sort.bed")
         data_file.write("\t" + sv + "\t" + str(lcr_dist) + "\t" + lcr_name + "\t" + lcr_dir + "\n")
         data_file.flush()
