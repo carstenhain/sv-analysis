@@ -8,6 +8,8 @@ All cutoffs are adjusted for this dataset
 ## SV length filter
 - Filtering SVs with a length smaller than 5 kb
 ## PCR duplicate filter
+Example of an false positive SV call due to a PCR amplified artefact. Both colored reads indicate a translocation to chr16 and stem from the same PCR library. IGV image, grouped by library, colored by SA
+![DV2 duplicates](DV2_duplicates.png)
 - Assembly of SV supporting reads with lamassemble [(Frith et al., 2021)](https://pubmed.ncbi.nlm.nih.gov/33289891/)
 - Mapping of SV supporting reads on the assembly using minimap2
-- 
+- Reads from the same library with similiar start and end positions in this mapping (**distance_start + distance_end < 150**)
