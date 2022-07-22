@@ -10,6 +10,11 @@ All cutoffs are adjusted for this dataset
 ## PCR duplicate filter
 Example of an false positive SV call due to a PCR amplified artefact. Both colored reads indicate a translocation to chr16 and stem from the same PCR library. IGV image, grouped by library, colored by SA
 ![DV2 duplicates](DV2_duplicates.png)
+- Gathering of supporting reads from the mapping
+  - If not all reads are found in a 4 kb segment around each breakpoint the SV is filtered out
 - Assembly of SV supporting reads with lamassemble [(Frith et al., 2021)](https://pubmed.ncbi.nlm.nih.gov/33289891/)
 - Mapping of SV supporting reads on the assembly using minimap2
-- Reads from the same library with similiar start and end positions in this mapping (**distance_start + distance_end < 150**)
+- Reads from the same library with similiar start and end positions in this mapping are flagged as duplicates (**distance<sub>start</sub> + distance<sub>end</sub> < 150**)
+- SV with less than 2 unique reads remaing are filtered (**RMDV < 2**)
+- Exception for SVs with DV=2 from the same library
+  - These SVs are already filtered if **distance<sub>start</sub> < 35** or **distance<sub>end</sub> < 35**
