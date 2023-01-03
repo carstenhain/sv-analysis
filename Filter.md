@@ -5,11 +5,12 @@ All cutoffs are adjusted for this dataset
 
 ## Step 1: Prefiltering
 ### Mapping quality filter
-- Filters a SV if the mapping quality of the supporting reads (either at the start or end site) is below **20**
+- Filters a SV if the mean mapping quality of the supporting reads (either at the start or end site) is **<20**
 ### Mismatch filter
 - Calculates the percent identity (pID) of each read in breakpoint region as $^{NM}/_{alignmentlength} \cdot 100$ %
 - Mean pID for the SV supporting reads and the normal reads at this region is calculated
-- Filtere SV if the mean pID of the SV supporting reads is **<5 %** below the mean pID of the normal reads
+- Filtere SV if the mean pID of the SV supporting reads is **<7 %** below the mean pID of the normal reads
+- Known issue: reads containing a long deletion have elevated NM value -> fix pID calculation
 ### Coverage filter
 - ToDo
 
