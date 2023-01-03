@@ -11,7 +11,8 @@ All parameters are adjusted for this dataset
 - Mean pID for the SV supporting reads and the normal reads at this region is calculated
 - Filtere SV if the mean pID of the SV supporting reads is **<7 %** below the mean pID of the normal reads
 - Lower pID is often due to mismapping of an inserted sequence
-- Known issue: reads containing a long deletion have elevated NM value -> fix pID calculation
+- *Known issue: reads containing a long deletion have elevated NM value -> fix pID calculation*
+
 ### Coverage filter
 - ToDo
 
