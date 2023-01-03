@@ -1,5 +1,8 @@
 # Filtering of structural variants (SVs)
+This script uses a two-step filtering process for removing false-positive SV calls. Excessive amounts of false positive SV calls is a problem in high-sensitivity Sniffles/SV calls, were variants are called with only 3+ supporting reads.
+
 All cutoffs are adjusted for this dataset
+
 ## Coverage filter
 - Filtering SVs in regions with abnormal high coverage
   - Sniffles2 annotation **DV > 50**
