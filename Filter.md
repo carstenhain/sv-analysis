@@ -10,8 +10,10 @@ All cutoffs are adjusted for this dataset
 - Calculates the percent identity (pID) of each read in breakpoint region as $^{NM}/_{alignmentlength} \cdot 100$ %
 - Mean pID for the SV supporting reads and the normal reads at this region is calculated
 - Filtere SV if the mean pID of the SV supporting reads is **<5 %** below the mean pID of the normal reads
+### Coverage filter
+- ToDo
 
-## Coverage filter
+##ALT
 - Filtering SVs in regions with abnormal high coverage
   - Sniffles2 annotation **DV > 50**
   - Often Sniffles annotation are not accurate, e.g. because the SV breakpoint is 1-2 bp next to a region with abnormal high coverage. Therefore, mean coverage in a 20 bp segment around each breakpoint is calculate using *samtools bedcov*. SVs with breakpoints in a high coverage segment (**Coverage > 100**) are filtered out.
