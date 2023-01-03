@@ -3,6 +3,16 @@ This script uses a two-step filtering process for removing false-positive SV cal
 
 All cutoffs are adjusted for this dataset
 
+$$ ^3/_7 $$
+## Step 1: Prefiltering
+### Mapping quality filter
+- Filters a SV if the mapping quality of the supporting reads (either at the start or end site) is below **20**
+### Mismatch filter
+<!-- 5 \cdot 4 = 5 \times 4 -->
+- Calculates the percent identity (pID) of each read in breakpoint region as $^{NM}/_{alignmentlength} \cdot 100$ %
+- Mean pID for the SV supporting reads and the normal reads at this region is calculated
+- Filtere SV if the mean pID of the SV supporting reads is **<5 %** below the mean pID of the normal reads
+
 ## Coverage filter
 - Filtering SVs in regions with abnormal high coverage
   - Sniffles2 annotation **DV > 50**
