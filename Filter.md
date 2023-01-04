@@ -34,4 +34,4 @@ Only in SVs that are not yet filtered (**Fig. 2b**)
   - *If the SV assembly maps better on the germline assembly than on the reference genome* (**Fig. 2c**)
 
 ![germline_Filter](images/germline_Filter.jpg)
-**Figure 2:** **(a)** **(b)** **(c)**
+**Figure 2:** Application of the germline insertion filter. **(a)** False positive SV detected by the SV assembly spanning the breakpoint. **(b)** False positive SV detected by assembling the underlying germline insertion. **(c)** Continuation of (b): Better mapping of the SV assembly on the germline assembly than on the reference genome due to the addition of the inserted sequence.
