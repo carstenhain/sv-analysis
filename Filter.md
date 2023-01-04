@@ -20,6 +20,13 @@ All parameters are adjusted for this dataset
 **Figure 1:** Application of the prefiltering step to a dataset. **(a)** pID and diff pID values for both breakpoints of SVs in one dataset, colored by different applied filters. One SV is shown as example (black diamonds). **(b)** SV supporting reads (marked) show a 15 % difference in pID at the start breakpoint visible in the alignment. **(c)** This is due to a mismapping of an insertion at the end breakpoint of this SV (visible in one read).
 
 ## Step 2: Filtering false positive SVs due to germline insertions
+### Filter SVs were the supporting reads span the breakpoint(s)
+- Assembly of SV supporting reads and mapping of the assembly
+- If the assembly spans the breakpoint (**Fig. 2a**) -> FILTER
+### Finding germline insertions
+- Collecting reads supporting a germline insertion at a breakpoint site
+  - Reads spanning the breakpoint as one alignment and showing a insertion >200b next to the breakpoint
+  - Reads spanning the breakpoint as primary-secondary alignment
 1) SV Assembly und falls die die Assembly dann bereits den breakpoint ausreichend überspannt dann rausfiltern, ist bei einigen calls wo reads auf beiden seiten des breakpoints als unterstützend für die assembly identifiziert wurden
 ![germline_Filter](images/germline_Filter.jpg)
 **Figure 2:** **(a)** **(b)** **(c)**
