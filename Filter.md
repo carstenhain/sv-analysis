@@ -24,9 +24,14 @@ All parameters are adjusted for this dataset
 - Assembly of SV supporting reads and mapping of the assembly
 - If the assembly spans the breakpoint (**Fig. 2a**) -> FILTER
 ### Finding germline insertions
+Only in SVs that are not yet filtered (**Fig. 2b**)
 - Collecting reads supporting a germline insertion at a breakpoint site
   - Reads spanning the breakpoint as one alignment and showing a insertion >200b next to the breakpoint
   - Reads spanning the breakpoint as primary-secondary alignment
-1) SV Assembly und falls die die Assembly dann bereits den breakpoint ausreichend überspannt dann rausfiltern, ist bei einigen calls wo reads auf beiden seiten des breakpoints als unterstützend für die assembly identifiziert wurden
+- Assembly of collected reads and mapping of the germline assembly
+- Filter the SV if
+  - The germline assembly spans the breakpoint
+  - *If the SV assembly maps better on the germline assembly than on the reference genome* (**Fig. 2c**)
+
 ![germline_Filter](images/germline_Filter.jpg)
 **Figure 2:** **(a)** **(b)** **(c)**
