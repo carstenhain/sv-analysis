@@ -1,6 +1,6 @@
 # sv-analysis
 Scripts for SV analysis - including filtering, refining, plotting
-The filtering strategy is described here [here](Filter.md)
+The filtering strategy is described [here](Filter.md).
 
 *Still WIP*
 
