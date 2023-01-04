@@ -14,6 +14,10 @@ def get_mean_pID (reads):
         data.append((1 - read.get_tag("NM") / (read.reference_end - read.reference_start)) * 100)
     return np.mean(data)
 
+# annotates SV record with MQ and PID values for both breakpoints
+# record : vcf record of this sv
+# samfile : pysam samfile of the sample
+# padding: search area around the breakpoint for finding SV supporting reads
 def annotate_record (record, samfile, padding):
 
 
@@ -48,6 +52,8 @@ def annotate_record (record, samfile, padding):
 
     return record
 
+# write FILTER fields depending on MQ (<20) and PID (diff > 7) values
+# record : vcf record of this sv
 def filter_record (record):
 
     # remove all previous filters
@@ -63,6 +69,7 @@ def filter_record (record):
 
     return record
 
+# adds info and filter lines to the vcf header
 def modify_vcf_header (vcf_file_path, info_vcf_file_path):
     fo = open(info_vcf_file_path, "w")
     vcf_file_lines = open(vcf_file_path).readlines()
@@ -92,7 +99,7 @@ def modify_vcf_header (vcf_file_path, info_vcf_file_path):
 
         fo.write(line)
 
-
+# applies modify_vcf_header and annotate_record to a complete vcf file
 def prefilter (vcf_file_path, sam_file_path):
 
     total_variants = 0
