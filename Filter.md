@@ -3,6 +3,21 @@ This script uses a two-step filtering process for removing false-positive SV cal
 
 All parameters are adjusted for this dataset
 
+```
+usage: filter_sv.py [-h] --vcf VCF --bam BAM --ref REF --folder FOLDER
+
+Filters false positive structural variants from a vcf file
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --vcf VCF        Path to SV vcf file
+  --bam BAM        Path to corresponding BAM file
+  --ref REF        Path to reference FASTA file
+  --folder FOLDER  Path to data folder
+```
+
+The script outputs a filtered vcf (FOLDER/` `.filter.vcf) as well as the intermediate vcfs. Additionally the reads and assemblies of the SVs and the potential germline variants are stored (FOLDER/` `_reads/ and FOLDER/` `_assemblies/) and mapped to the reference (FOLDER/` `_mappings/).
+
 ## Step 1: Prefiltering
 ### Mapping quality filter
 - Filters a SV if the mean mapping quality of the supporting reads (either at the start or end site) is **<20**
