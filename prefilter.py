@@ -100,7 +100,7 @@ def modify_vcf_header (vcf_file_path, info_vcf_file_path):
         fo.write(line)
 
 # applies modify_vcf_header and annotate_record to a complete vcf file
-def prefilter (vcf_file_path, sam_file_path):
+def prefilter (vcf_file_path, sam_file_path, data_folder):
 
     total_variants = 0
     short_variants = 0
@@ -108,11 +108,11 @@ def prefilter (vcf_file_path, sam_file_path):
     passing_variants = 0
 
     # add info fields and filter to vcf header
-    modify_vcf_header(vcf_file_path, vcf_file_path.split(".vcf")[0] + ".annot.vcf")
+    modify_vcf_header(vcf_file_path, data_folder + vcf_file_path.split(".vcf")[0].split("/")[-1] + ".annot.vcf")
 
     # load vcf files
-    vcf_reader = vcf.Reader(open(vcf_file_path.split(".vcf")[0] + ".annot.vcf", "r"))
-    vcf_writer = vcf.Writer(open(vcf_file_path.split(".vcf")[0] + ".prefilter.vcf", "w"), template=vcf_reader)
+    vcf_reader = vcf.Reader(open(data_folder + vcf_file_path.split(".vcf")[0].split("/")[-1] + ".annot.vcf", "r"))
+    vcf_writer = vcf.Writer(open(data_folder + vcf_file_path.split(".vcf")[0].split("/")[-1] + ".prefilter.vcf", "w"), template=vcf_reader)
 
     # load matching samfile
     samfile = pysam.AlignmentFile(sam_file_path, "rb")
